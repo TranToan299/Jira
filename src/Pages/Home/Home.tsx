@@ -1,16 +1,21 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { PayloadAction } from '@reduxjs/toolkit'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { history } from '../..'
-import { RootState } from '../../Redux/configStore'
+import { DispatchType, RootState } from '../../Redux/configStore'
+import { addNumber } from '../../Redux/Reducers/productReducer'
+
 
 type Props = {}
 
 const Home = (props: Props) => {
 
-  const { array } = useSelector((state: RootState) => { return state.productReducer })
-
-
-  console.log(array)
+  const {arrNumber} = useSelector((state: RootState) => { return state.productReducer })
+  const dispatch: DispatchType = useDispatch()
+useEffect(() => {
+  const action:PayloadAction<number> = addNumber(4)
+  dispatch(action)
+},[])
   return (
     <>
       <div className='container'>
@@ -24,11 +29,10 @@ const Home = (props: Props) => {
             <div className="wrap-form">
               <form className='form-login'>
                 <div className="form-group">
-                <input type="text" className="form-control" placeholder='Enter your email' id='email'/>
+                  <input type="text" className="form-control" placeholder='Enter your email' id='email'/>
                 </div>
                 <div className="form-group">
-               
-                <input type="password" className="form-control" placeholder='Enter your password' id='password'/>
+                  <input type="password" className="form-control" placeholder='Enter your password' id='password'/>
                 </div>
               </form>
             </div>

@@ -1,15 +1,31 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+
+
+export interface ProductModel {
+  
+}
+
+export type productState = {
+arrNumber:number[]
+}
+
+
 
 const initialState = {
-    array:[1,2,3]
+   arrNumber: [1, 2, 3]
+ 
 }
 
 const productReducer = createSlice({
   name: 'productReducer',
   initialState,
-  reducers: {}
+  reducers: {
+    addNumber: (state:productState,action:PayloadAction<number>) => {
+       state.arrNumber.push(action.payload)
+    }
+  }
 });
 
-export const {} = productReducer.actions
+export const {addNumber} = productReducer.actions
 
 export default productReducer.reducer

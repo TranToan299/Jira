@@ -7,12 +7,13 @@ import HomeTemplate from './Template/HomeTemplate';
 
 import { store } from './Redux/configStore';
 import Home from './Pages/Home/Home';
-
+// style
+import './Assets/scss/styles.scss';
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-export const history: any = createBrowserHistory()
+export const history:any = createBrowserHistory()
 
 root.render(
   <Provider store={store}>
